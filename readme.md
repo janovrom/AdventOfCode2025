@@ -17,3 +17,11 @@ Part 1 was about finding two largest numbers. The order might be an issue, so we
 So here for part 2 I decided to get smart. That was a bad decision. If you wanna get smart with these tasks, make sure to handle all edge cases in your algorithm. That wasn't the case, so just use memoization and brute force it. Which works on test data, but is slow for input data...
 
 Turns out, that sorting it lexicographicly (linear time) is the correct solution here. So you basically go over the values in order, and if you encounter bigger value then the last one, try to propagate it (if using stack, then it's popping the stack) until the value in front is not bigger and if we have enough remaining values.
+
+## Day 4
+This task was very simple and perfectly illustrates all the tasks I have done up till now: The first part usually creates a sub-function that can be used to resolve the part 2 (not always the case for me), but here it really shines. Very straightforward.
+
+## Day 5
+I see the task and immediatelly suspect, that for part 2, I'll need to merge the intervals. Let's see how it goes...
+
+If we skip the issues between rust having string with \n and windows text file with \r\n, here we go! merge intervals!
