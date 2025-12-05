@@ -1,0 +1,3 @@
+# Ignore all files named Input*.txt or input*.txt in any directory
+**/[Ii]nput*.txt
+**/[Ii]nput/day*.txt
