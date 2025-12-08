@@ -25,3 +25,11 @@ This task was very simple and perfectly illustrates all the tasks I have done up
 I see the task and immediatelly suspect, that for part 2, I'll need to merge the intervals. Let's see how it goes...
 
 If we skip the issues between rust having string with \n and windows text file with \r\n, here we go! merge intervals!
+
+## Day 6
+This one was very simple. You just have to parse the data properly. The parsing here is the problem though: Inspecting chars/strings in VS Code when using rust proved to be hard. I am way too spoiled from PowerShell or C# and Visual Studio... Maybe there is a way?
+
+## Day 7
+So when I first see this, my question is: Can I have two splitters next to each other? No I don't which makes things easier.
+
+There is no issue here. I rewrote the part1 for part2 to use recursion instead so that I can use memoization.
