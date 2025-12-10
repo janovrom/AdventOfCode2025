@@ -1,6 +1,8 @@
 # Collection of solutions for Advent of Code 2025
 This year I decided to make the solutions in Rust. The biggest challenge will probably be getting used to the syntax and using Rust on Linux (just getting started here as well).
 
+How to run (and compile these): Since it is not allowed to share your inputs (for reverse engineering), I place them inside folder hidden by gitignore: dayX/input/dayX.txt. These are included using include_str! so to run it, the file has to be present on the disk.
+
 ## Day 1
 This is a simple exercise for circular buffer. For part 1 just checking if there is a `zero` in the sequence is enough. But for part 2, you need to check all overflows.
 
@@ -33,3 +35,13 @@ This one was very simple. You just have to parse the data properly. The parsing 
 So when I first see this, my question is: Can I have two splitters next to each other? No I don't which makes things easier.
 
 There is no issue here. I rewrote the part1 for part2 to use recursion instead so that I can use memoization.
+
+## Day 8
+At first, I though this will be minimum spanning tree, but getting all triplets (i, j, distance) where 'i' is index of first box and 'j' is index of second box, sorting them by distance and then do union-tree-like algorithm based on distance worked. In fact, here part 2 might have been easier as it skipped the part, where you have to get the largest sets.
+
+## Day 9
+I felt like the part 1 will be easy and it was. Just make an iterator for cartesian product of indices and compare all bounding boxes and get the largest one. But part 2... 
+
+So my intuition tells me, I get a non-convex polygon and for each pair of the cartesian product I could check if the bounding box is inside this polygon. That should be that none of the bounding box edges cross the edge of the polygon and at the same time, all corners of the bounding box are inside the polygon.
+
+And it ended as I though, it works for test case, but there is some edge case in input data... Surprisingly, debugging with AI helped. It identified the edge cases I mishandled. It feels wrong, but the overall algorithm is mine, and it has been a long time since I actually implement line-segment intersection myself.
