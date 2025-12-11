@@ -45,3 +45,28 @@ I felt like the part 1 will be easy and it was. Just make an iterator for cartes
 So my intuition tells me, I get a non-convex polygon and for each pair of the cartesian product I could check if the bounding box is inside this polygon. That should be that none of the bounding box edges cross the edge of the polygon and at the same time, all corners of the bounding box are inside the polygon.
 
 And it ended as I though, it works for test case, but there is some edge case in input data... Surprisingly, debugging with AI helped. It identified the edge cases I mishandled. It feels wrong, but the overall algorithm is mine, and it has been a long time since I actually implement line-segment intersection myself.
+
+## Day 10
+I wanted to be smart for part 1, but ended with brute force: Find all combinations of buttons for 1, 2, 3, etc. and apply them. Take the first find. Since we can efficiently do the buttons and lights by XOR, it was fine.
+
+But part 2, I've implemented memoization and dfs. Of course, it's too slow and crashes eventually on memory. Maybe I need to exploit existence of some loops and repetitions?
+
+Well... technically speaking, it's a set of equations. For example, if I take this `[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}` we get `(0 0 0 1) * x + (0 1 0 1) * y + (1 0 1 0) * z + (1 1 0 0) * w = (3 5 4 7)`:
+1. 0 0 0 1 | 3
+1. 0 1 0 1 | 5
+1. 1 0 1 0 | 4
+1. 1 1 0 0 | 7
+
+Ok, I've tried to make ILP out of it. It is fairly simple Ax = b where xi >= 0. Sounds simple right? Well, I haven't written single optimizer in my live and last time I did this was at uni. Few AI suggestions later and optimization for BFS and DFS, I went for the z3 solver (python package). If you look at `solution.py` what it does is self explanatory.
+
+## Day 11
+I looked at the test input data and there was no cycle. So I took a leap of faith and part 1 was done with simple BFS! 
+
+I also checked, if there is some output from `out` and there is not, another step less to handle. I tried the same strategy but as expected, there is a catch. I've plotted the result in Graphviz and guess what I saw?
+
+![you-out](./images/image.png)
+
+The small subset? Multiply it by 4 and that's where the `srv` lies. Good thing is, I don't see any cycles, so it really is just the sheer amount.
+![full](./images/full_graph.png)
+
+Now do you see those groups of nodes between the large nodes? Well we don't have to search them all, we can split them. We can see from the graph that all is funnelling into them so we compute a subset and multiply the results.
