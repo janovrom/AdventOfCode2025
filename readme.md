@@ -70,3 +70,12 @@ The small subset? Multiply it by 4 and that's where the `srv` lies. Good thing i
 ![full](./images/full_graph.png)
 
 Now do you see those groups of nodes between the large nodes? Well we don't have to search them all, we can split them. We can see from the graph that all is funnelling into them so we compute a subset and multiply the results.
+
+## Day 12
+Well this was a roller coaster of emotions. I made first implementation, didn't work (it said all the solutions are valid). I've plotted the results and of cource it won't work! It wasn't doing anything... I am starting to dislike debugging in VS Code with Rust.
+
+After a game session I came back, scrapped the solution and made a new one. I'd say big brain decision from me to include a check if we even can fit all the `#` from requested presents in the regions. It is slow, but it works and it rejected almost half outright!
+
+I was quite scared seeing how slow it is, how will I finish part 2? But there was no part 2! Well then, Happy Christmas \o/
+
+PS: I went back and checked the implementation, I can add additional check if the solution is found during search phase; now it's fast.
